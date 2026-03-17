@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Library</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <h1>Vanilla Library</h1>
+        <div class="controller">
+            <button commandfor="new-dialog" command="show-modal" class="outline-button">Add</button>
+        </div>
+        <dialog closedby="any" id="new-dialog">
+            <form action="search_result" method="get">
+                <label for="site-search">Search Library</label>
+                <input type="search" id="site-search" name="q" placeholder="Enter keywords..."/>
+                <button type="submit" class="search-button">
+                    <img src="icons/magnify.svg"
+                    alt="Seach icon" width="15" height="15"> 
+                </button>
+                <button commandfor="new-dialog" command="close" aria-label="Close">x</button>
+                <form action="#" method="dialog" class="new-form">
+                    <div>
+                        <h3>Add a new book</h3>
+                        <p><em>(*) required</em></p>
+                    </div>
+                    <div>
+                        <label for="title">Title (*):</label>
+                        <input type="text" id="title" name="title" required aria-required="true"
+                        placeholder="The Art of War">
+                    </div>
+                    <div>
+                        <label for="author">Author (*):</label>
+                        <input type="text" id="author" name="author" required aria aria-required="true"
+                        placeholder="Sun Tzu">
+                    </div>
+                    <div>
+                        <label for="complete">Completed</label>
+                        <input type="checkbox" name="complete" id="complete">
+                    </div>
+                    <button type="submit">Add</button>
+                </form>
+            </form>       
+        </dialog>
+        <div class="books">
+            
+        </div>
+        <script src="library.js"></script>
+    </body>
