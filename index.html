@@ -10,7 +10,7 @@
     <body>
         <h1>Vanilla Library</h1>
         <div class="controller">
-            <button commandfor="new-dialog" command="show-modal" class="outline-button">Add</button>
+            <button commandfor="new-dialog" command="show-modal" class="outline-button">Add Book</button>
         </div>
         <dialog closedby="any" id="new-dialog">
             <form action="search_result" method="get">
@@ -35,6 +35,11 @@
                         <label for="author">Author (*):</label>
                         <input type="text" id="author" name="author" required aria aria-required="true"
                         placeholder="Sun Tzu">
+                    </div>
+                    <div>
+                        <label for="pages">Number of pages (*):</label>
+                        <input type="number" name="pages" id="pages"
+                        min="0" required aria-required="true" placeholder="100">
                     </div>
                     <div>
                         <label for="complete">Completed</label>
