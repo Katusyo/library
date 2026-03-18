@@ -10,16 +10,16 @@
     <body>
         <h1>Vanilla Library</h1>
         <div class="controller">
-            <button commandfor="new-dialog" command="show-modal" class="outline-button">Add Book</button>
-        </div>
-        <dialog closedby="any" id="new-dialog">
-            <form action="search_result" method="get">
-                <label for="site-search">Search Library</label>
+            <label for="site-search">Search Library</label>
                 <input type="search" id="site-search" name="q" placeholder="Enter keywords..."/>
                 <button type="submit" class="search-button">
                     <img src="icons/magnify.svg"
                     alt="Seach icon" width="15" height="15"> 
                 </button>
+            <button commandfor="new-dialog" command="show-modal" class="outline-button">Add Book</button>
+        </div>
+        <dialog closedby="any" id="new-dialog">
+            <form action="search_result" method="get">
                 <button commandfor="new-dialog" command="close" aria-label="Close">x</button>
                 <form action="#" method="dialog" class="new-form">
                     <div>
