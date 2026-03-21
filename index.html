@@ -10,47 +10,47 @@
     <body>
         <h1>Vanilla Library</h1>
         <div class="controller">
-            <label for="site-search">Search Library</label>
-                <input type="search" id="site-search" name="q" placeholder="Enter keywords..."/>
-                <button type="submit" class="search-button">
+            <label for="siteSearch">Search Library</label>
+                <input type="search" id="siteSearch" aria-label="Search books" name="q" placeholder="Enter keywords..."/>
+                <button type="button" class="search-button">
                     <img src="icons/magnify.svg"
-                    alt="Seach icon" width="15" height="15"> 
+                    alt="Search icon" width="15" height="15"> 
                 </button>
             <button commandfor="new-dialog" command="show-modal" class="outline-button">Add Book</button>
         </div>
-        <dialog closedby="any" id="new-dialog">
-            <form action="search_result" method="get">
-                <button commandfor="new-dialog" command="close" aria-label="Close">x</button>
-                <form action="#" method="dialog" class="new-form">
-                    <div>
-                        <h3>Add a new book</h3>
-                        <p><em>(*) required</em></p>
-                    </div>
-                    <div>
-                        <label for="title">Title (*):</label>
-                        <input type="text" id="title" name="title" required aria-required="true"
-                        placeholder="The Art of War">
-                    </div>
-                    <div>
-                        <label for="author">Author (*):</label>
-                        <input type="text" id="author" name="author" required aria aria-required="true"
-                        placeholder="Sun Tzu">
-                    </div>
-                    <div>
-                        <label for="pages">Number of pages (*):</label>
-                        <input type="number" name="pages" id="pages"
-                        min="0" required aria-required="true" placeholder="100">
-                    </div>
-                    <div>
-                        <label for="complete">Completed</label>
-                        <input type="checkbox" name="complete" id="complete">
-                    </div>
-                    <button type="submit">Add</button>
-                </form>
-            </form>       
+        <p id="noResults" style="display:none;">No results found</p>
+        <dialog id="new-dialog">
+            <button commandfor="new-dialog" command="close" aria-label="Close">x</button>
+            <form action="#" method="dialog" class="new-form">
+                <div>
+                    <h3>Add a new book</h3>
+                    <p><em>(*) required</em></p>
+                </div>
+                <div>
+                    <label for="title">Title (*):</label>
+                    <input type="text" id="title" name="title" required aria-required="true"
+                    placeholder="The Art of War">
+                </div>
+                <div>
+                    <label for="author">Author (*):</label>
+                    <input type="text" id="author" name="author" required aria-required="true"
+                    placeholder="Sun Tzu">
+                </div>
+                <div>
+                    <label for="pages">Number of pages (*):</label>
+                    <input type="number" name="pages" id="pages"
+                    min="0" required aria-required="true" placeholder="100">
+                </div>
+                <div>
+                    <label for="complete">Completed</label>
+                    <input type="checkbox" name="complete" id="complete">
+                </div>
+                <button type="submit">Add</button>
+            </form>      
         </dialog>
-        <div class="books">
+        <div class="books" id="booksContainer">
             
         </div>
-        <script src="library.js"></script>
+
+        <script defer src="library.js"></script>
     </body>
