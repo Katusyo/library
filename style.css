@@ -14,7 +14,7 @@
 }
 
 .controller button {
-    background-color: aquamarine;
+    background-color: rgb(199, 163, 233);
     border-radius: 13px;
     padding: 4px 40px;
 }
@@ -33,6 +33,7 @@ h1, h3 {
 }
 
 h1 {
+    font-family: 'Times New Roman', Times, serif;
     padding: 10px 0;
 }
 
