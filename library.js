@@ -80,13 +80,24 @@ function createBookWall(data) {
     const {id, title, author, pages, completed} = data;
     const bookWall = document.createElement("div");
     bookWall.classList.add("book");
+
     const titlePara = document.createElement("p");
     titlePara.textContent = title;
-    const infoPara = document.createElement("p");
-    infoPara.textContent = `Written by ${author} - ${pages} pages${completed ? " - Complete ✓" : ""}`;
+
+    const authorPara = document.createElement("p");
+    authorPara.textContent = `Author: ${author}`;
+
+    const pagesPara = document.createElement("p");
+    pagesPara.textContent =`Pages: ${pages}`;
+
+    const completedPara = document.createElement("p");
+    completedPara.textContent = completed ? "Completed ✓" : "Not completed";
+
     const textDiv = document.createElement("div");
     textDiv.appendChild(titlePara);
-    textDiv.appendChild(infoPara);
+    textDiv.appendChild(authorPara);
+    textDiv.appendChild(pagesPara);
+    textDiv.appendChild(completedPara);
 
     const removeButton = document.createElement("button");
     removeButton.textContent = "🗑";

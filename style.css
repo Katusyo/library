@@ -87,13 +87,14 @@ dialog button {
 .wall-buttons {
     display: flex;
     justify-content: space-between;
-    margin-top: 10px;
+    margin-top: 5px;
+    padding: 0 30px;
 }
 
 .wall-buttons button {
     background-color: rgb(199, 163, 233);
     border: 2px solid black;
     border-radius: 8px;
-    padding: 5px 10px;
+    padding: 1px 3px;
     cursor: pointer;
 }
