@@ -3,15 +3,25 @@ class Library {
         this.books = [];
     }
 
+    saveToStorage() {
+        localStorage.setItem(
+            "LibraryBooks",
+            JSON.stringify(this.books)
+        );
+    }
+
     addBook(title, author, pages, completed = false) {
         const newBook = new Book(title, author, pages, completed);
             this.books.push(newBook);
+
+            this.saveToStorage();
     }
 
     removeBook(id) {
         const idx = this.books.findIndex(book => book.id === id);
         if (idx !== -1) {
             this.books.splice(idx, 1);
+            this.saveToStorage();
         }
     }
 
@@ -19,7 +29,24 @@ class Library {
         const book = this.books.find(book => book.id === id);
         if (book) {
             book.toggleCompleted();
+            this.saveToStorage();
         }
+    }
+
+    loadFromStorage() {
+        const storedBooks = JSON.parse(localStorage.getItem("LibraryBooks")) || [];
+
+        this.books = storedBooks.map(bookData => {
+            const book = new Book(
+                bookData.title,
+                bookData.author,
+                bookData.pages,
+                bookData.completed
+            );
+            book.id = bookData.id;
+
+            return book;
+        })
     }
 }
 
@@ -131,15 +158,58 @@ function onSubmitNewBook(e) {
     e.preventDefault();
 
     const data = new FormData(e.target);
+
     const title = data.get("title");
     const author = data.get("author");
     const pages = data.get("pages");
-    const completed = !!data.get("completed");
+
+    const titleInput = document.querySelector("#title");
+    const authorInput = document.querySelector("#author");
+    const pagesInput = document.querySelector("#pages");
+    const completed = !!data.get("complete");
+
+    if (titleInput.validity.valueMissing) {
+        titleInput.setCustomValidity("Please enter a book title.");
+    } else {
+        titleInput.setCustomValidity("");
+    }
+    
+    if (authorInput.validity.valueMissing) {
+        authorInput.setCustomValidity("Please enter author's name.");
+    } else {
+        authorInput.setCustomValidity("");
+    }
+
+    if (pagesInput.validity.valueMissing) {
+        pagesInput.setCustomValidity(
+            "Please enter the number of pages."
+        );
+    } else if (pagesInput.validity.rangeUnderflow) {
+        pagesInput.setCustomValidity(
+            "Pages must be greater thatn 0."
+        );
+    } else {
+        pagesInput.setCustomValidity("");
+    }
+    
+    if (!e.target.checkValidity()) {
+        e.target.reportValidity();
+        return;
+    }
 
     library.addBook(title, author, pages, completed);
     ui.displayBooks();
 
     e.target.reset()
+}
+
+function validateTitle() {
+    if (titleInput.validity.valueMissing) {
+        console.log("TITLE VALIATION RUNNING");
+        titleInput.setCustomValidity("Please enter a book title.");
+    } else {
+        titleInput.setCustomValidity("");
+    }
 }
 
 function onRemoveBook(e) {
@@ -162,8 +232,13 @@ document.addEventListener("DOMContentLoaded", () => {
 const library = new Library();
 const ui = new LibraryUI(library);
 
-library.addBook("1984", "George Orwell", 328, true);
-library.addBook("Batman: The Killing Joke", "Alan Moore, Brian Bolland", 48, true);
-library.addBook("1Q84", "Haruki Murakami", 925, true);
+library.loadFromStorage();
+
+if (library.books.length === 0) {
+    library.addBook("1984", "George Orwell", 328, true);
+    library.addBook("Batman: The Killing Joke", "Alan Moore, Brian Bolland", 48, true);
+    library.addBook("1Q84", "Haruki Murakami", 925, true);
+    saveLibrary();
+}
 
 ui.displayBooks();

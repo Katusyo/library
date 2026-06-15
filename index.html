@@ -24,7 +24,7 @@
         <p id="noResults" style="display:none;">No results found</p>
         <dialog id="new-dialog">
             <button commandfor="new-dialog" command="close" aria-label="Close">x</button>
-            <form action="#" method="dialog" class="new-form">
+            <form class="new-form" novalidate>
                 <div>
                     <h3>Add a new book</h3>
                     <p><em>(*) required</em></p>
@@ -42,14 +42,15 @@
                 <div>
                     <label for="pages">Number of pages (*):</label>
                     <input type="number" name="pages" id="pages"
-                    min="0" required aria-required="true" placeholder="100">
+                    min="1" required aria-required="true" placeholder="100">
                 </div>
                 <div>
                     <label for="complete">Completed</label>
                     <input type="checkbox" name="complete" id="complete">
                 </div>
                 <button type="submit">Add</button>
-            </form>      
+            </form>
+            <p class="form-error"></p>
         </dialog>
         <div class="books" id="booksContainer">
             
