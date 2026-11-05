@@ -1,6 +1,6 @@
 # Library
 
-A personal book-tracking app in vanilla JavaScript. Add book through a dialog form, mark them completed, search your collection -- everything is saved in the browser, so your library i still there when you come back.
+A personal book-tracking app in vanilla JavaScript. Add book through a dialog form, mark them completed, search your collection -- everything is saved in the browser, so your library is still there when you come back.
 
 ## Built with
 
@@ -12,7 +12,7 @@ A personal book-tracking app in vanilla JavaScript. Add book through a dialog fo
 
   - Add a book (title, author, pages, completed or not) through a modal dialog form
   - Custom form validation with friendly error messages -- required fields, and pages must be greater than 0
-  - Each book is an object created by a `Book` class with a unique ID (`crypto,randomUUID()`)
+  - Each book is an object created by a `Book` class with a unique ID (`crypto.randomUUID()`)
   - Mark books as completed or not completed from their card
   - Delete books from the collection
   - Live search that filters the book wall as you type, with a "No results found" state
